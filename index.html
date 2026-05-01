@@ -3,34 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Shine Detailing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Elite Shine Detailing | Excelență în Îngrijire Auto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1A1A1A;
-            --accent: #D4A373;
-            --light: #F5F5F5;
+            --primary: #050505;
+            --primary-light: #111111;
+            --accent: #C5A059;
+            --accent-light: #E6C280;
+            --light: #FDFDFD;
             --white: #FFFFFF;
-            --gray: #666666;
-            --success: #4CAF50;
-            --danger: #f44336;
+            --gray: #888888;
+            --success: #2E8540;
+            --danger: #D32F2F;
+            --glass: rgba(255, 255, 255, 0.6);
+            --glass-dark: rgba(5, 5, 5, 0.85);
+            --shadow-sm: 0 4px 10px rgba(0,0,0,0.03);
+            --shadow-md: 0 15px 35px rgba(0,0,0,0.06);
+            --shadow-lg: 0 30px 60px rgba(0,0,0,0.12);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Nunito', sans-serif;
-            background: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
             color: var(--primary);
-            line-height: 1.6;
+            line-height: 1.8;
+            font-weight: 300;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4 {
-            font-family: 'Libre Baskerville', serif;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.01em;
+            font-weight: 600;
+        }
+
+        /* Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Header */
@@ -39,32 +69,41 @@
             top: 0;
             left: 0;
             right: 0;
-            background: var(--primary);
+            background: var(--glass-dark);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             z-index: 1000;
-            padding: 1rem 2rem;
+            padding: 1.25rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .logo {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
             color: var(--accent);
-            font-weight: 700;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            text-transform: uppercase;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         nav a {
-            color: var(--white);
+            color: rgba(255,255,255,0.7);
             text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
+            font-weight: 400;
+            font-size: 0.8rem;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
         }
 
         nav a:hover, nav a.active {
@@ -74,41 +113,31 @@
         .hamburger {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 6px;
             cursor: pointer;
             padding: 5px;
+            z-index: 1001;
         }
 
         .hamburger span {
-            width: 25px;
-            height: 3px;
+            width: 28px;
+            height: 2px;
             background: var(--white);
-            transition: all 0.3s;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
+            transition: all 0.3s ease;
         }
 
         /* Mobile Nav */
         .mobile-nav {
             display: none;
             position: fixed;
-            top: 70px;
+            top: 0;
             left: 0;
             right: 0;
+            bottom: 0;
             background: var(--primary);
-            padding: 2rem;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
+            padding: 8rem 2rem;
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
             z-index: 999;
         }
 
@@ -120,42 +149,39 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 2rem;
+            text-align: center;
         }
 
         .mobile-nav a {
             color: var(--white);
             text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Libre Baskerville', serif;
         }
 
         /* Main Content */
         main {
-            padding-top: 70px;
+            padding-top: 0;
             min-height: 100vh;
         }
 
         .page {
             display: none;
-            animation: fadeIn 0.4s ease;
         }
 
         .page.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         /* Hero Section */
         .hero {
-            height: calc(100vh - 70px);
-            background: linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(26,26,26,0.6) 50%, rgba(212,163,115,0.3) 100%), url('imgs/hero.png');
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('imgs/hero.png');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -165,262 +191,455 @@
             position: relative;
         }
 
-        .hero::before {
+        .hero-content {
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            line-height: 1.1;
+        }
+
+        .hero-content .subtitle {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            margin-bottom: 2rem;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 2.5rem;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 0;
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+            border: 1px solid var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.75rem;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--accent);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 2.5rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 0;
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.75rem;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--white);
+            padding: 6rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .stat-item .number {
+            font-size: 4rem;
+            font-weight: 400;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item .label {
+            font-size: 0.75rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-weight: 500;
+        }
+
+        /* Sections */
+        .section {
+            padding: 10rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title-wrap {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .section-subtitle {
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            font-size: 0.75rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .section-title::after {
             content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        /* Features/Services Grid */
+        .features-grid, .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card, .service-card {
+            background: var(--white);
+            padding: 5rem 4rem;
+            border-radius: 0;
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            border: 1px solid rgba(0,0,0,0.02);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-card:hover, .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(0,0,0,0.05);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            color: var(--accent);
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .feature-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke-width: 1.2;
+        }
+
+        .feature-card h3, .service-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .feature-card p, .service-card p {
+            color: var(--gray);
+            font-size: 1rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .gallery-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(ellipse at center, transparent 0%, rgba(26,26,26,0.4) 100%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: slideUp 0.8s ease;
-        }
-
-        .hero-content .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.95;
-            animation: slideUp 0.8s ease 0.2s both;
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
-            animation: slideUp 0.8s ease 0.4s both;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: slideUp 0.8s ease 0.6s both;
-        }
-
-        .btn-outline {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-
-        .btn-outline:hover {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Stats Bar */
-        .stats-bar {
-            background: var(--primary);
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            text-align: center;
-        }
-
-        .stat-item {
-            color: var(--white);
-        }
-
-        .stat-item .number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            font-family: 'Libre Baskerville', serif;
-        }
-
-        .stat-item .label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Why Choose Us */
-        .why-choose {
-            background: var(--white);
-            padding: 4rem 2rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            text-align: center;
-            padding: 2rem;
-            border-radius: 15px;
-            background: var(--light);
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--accent), #c49463);
-            border-radius: 50%;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(4px);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
+            opacity: 0;
+            transition: all 0.5s;
         }
 
-        .feature-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary);
+        .gallery-item:hover img {
+            transform: scale(1.1);
         }
 
-        .feature-card p {
-            color: var(--gray);
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
         }
 
         /* Testimonials */
         .testimonials {
-            background: linear-gradient(135deg, var(--primary) 0%, #2a2a2a 100%);
-            padding: 4rem 2rem;
+            background: var(--primary);
+            padding: 12rem 2rem;
             color: var(--white);
-        }
-
-        .testimonials .section-title {
-            color: var(--white);
+            position: relative;
         }
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 4rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .testimonial-card {
-            background: rgba(255,255,255,0.05);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(212,163,115,0.2);
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            border: none;
+            border-left: 1px solid rgba(255,255,255,0.1);
+            padding-left: 3rem;
+            transition: all 0.6s;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            background: transparent;
+            border-color: var(--accent);
         }
 
         .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
+            font-size: 1.15rem;
+            line-height: 2.2;
+            font-style: normal;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            opacity: 0.85;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .testimonial-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--accent);
+            width: 60px;
+            height: 60px;
+            border-radius: 0;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .testimonial-info h4 {
-            font-family: 'Nunito', sans-serif;
             font-weight: 600;
+            color: var(--accent);
             font-size: 1rem;
+            font-family: 'Playfair Display', serif;
         }
 
-        .testimonial-info span {
-            font-size: 0.85rem;
-            opacity: 0.7;
+        .testimonial-author h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-author span {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
         }
 
         /* CTA Banner */
         .cta-banner {
-            background: linear-gradient(135deg, var(--accent), #c49463);
-            padding: 4rem 2rem;
+            background: var(--accent);
+            padding: 12rem 2rem;
             text-align: center;
         }
 
-        .cta-banner h2 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .cta-banner p {
-            color: var(--primary);
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-banner .btn {
-            background: var(--primary);
+        /* Page Hero */
+        .page-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(5,5,5,0.8), rgba(5,5,5,0.8)), url('imgs/hero-2.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             color: var(--white);
         }
 
-        .cta-banner .btn:hover {
-            background: #333;
+        .page-hero h1 {
+            font-size: clamp(3rem, 7vw, 5rem);
+            color: var(--white);
+            margin-top: 1rem;
         }
 
-        /* WhatsApp Floating Button */
+        /* About & Service Details */
+        .about-content, .service-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8rem;
+            align-items: center;
+            margin-bottom: 10rem;
+        }
+
+        .about-image img, .service-image img {
+            width: 100%;
+            border-radius: 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-text h3, .service-info h3 {
+            font-size: 2.75rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .about-text p, .service-info p {
+            font-weight: 300;
+            line-height: 2;
+            color: var(--gray);
+        }
+
+        .service-info ul {
+            list-style: none;
+            margin-top: 3rem;
+        }
+
+        .service-info li {
+            padding: 1.25rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-weight: 500;
+            color: var(--primary);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* FAQ */
+        .accordion-item {
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 0;
+        }
+
+        .accordion-header {
+            padding: 2.5rem 0;
+            background: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            font-size: 1.25rem;
+            font-family: 'Playfair Display', serif;
+            transition: color 0.4s;
+        }
+
+        .accordion-header:hover {
+            color: var(--accent);
+        }
+
+        .accordion-header::after {
+            content: '+';
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 300;
+        }
+
+        .accordion-item.active .accordion-header::after {
+            content: '−';
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 400px;
+            padding-bottom: 2.5rem;
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Floating WA */
         .whatsapp-float {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 40px;
+            right: 40px;
             width: 60px;
             height: 60px;
             background: #25D366;
@@ -428,616 +647,60 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            box-shadow: 0 10px 25px rgba(37,211,102,0.3);
             z-index: 1000;
             transition: all 0.3s;
-            text-decoration: none;
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(37,211,102,0.5);
+            transform: scale(1.1) translateY(-5px);
         }
 
-        .whatsapp-float svg {
-            width: 30px;
-            height: 30px;
-            fill: white;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--accent);
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 5px;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn:hover {
-            background: #c49463;
-            transform: translateY(-2px);
-        }
-
-        /* Sections */
-        .section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary);
-        }
-
-        /* Home Services */
-        .services-short {
-            background: var(--white);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            text-align: center;
-            padding: 2rem;
-            border: 1px solid #eee;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-
-        .service-card:hover {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transform: translateY(-5px);
-        }
-
-        .service-card h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        /* Featured Work */
-        .featured-work {
-            background: var(--light);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            height: 250px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        /* About Page */
-        .page-hero {
-            height: 60vh;
-            background: linear-gradient(rgba(26,26,26,0.7), rgba(26,26,26,0.7)), url('imgs/hero-2.png');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-        }
-
-        .page-hero h1 {
-            font-size: 3rem;
-            color: var(--accent);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .about-text h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .value-card {
-            text-align: center;
-            padding: 2rem;
-            background: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .value-card h4 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        /* Services Page */
-        .service-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            background: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .service-item:nth-child(even) {
-            direction: rtl;
-        }
-
-        .service-item:nth-child(even) > * {
-            direction: ltr;
-        }
-
-        .service-image img {
-            width: 100%;
-            border-radius: 10px;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .service-info h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .service-info ul {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .service-info li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        /* FAQ */
-        .faq-section {
-            background: var(--white);
-            margin-top: 4rem;
-        }
-
-        .accordion {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .accordion-item {
-            border: 1px solid #ddd;
-            margin-bottom: 1rem;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .accordion-header {
-            padding: 1.5rem;
-            background: var(--light);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-        }
-
-        .accordion-header::after {
-            content: '+';
-            font-size: 1.5rem;
-            color: var(--accent);
-        }
-
-        .accordion-item.active .accordion-header::after {
-            content: '-';
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            padding: 0 1.5rem;
-        }
-
-        .accordion-item.active .accordion-content {
-            max-height: 300px;
-            padding: 1.5rem;
-        }
-
-        /* Blog Page */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .blog-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .blog-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .blog-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .blog-content {
-            padding: 1.5rem;
-        }
-
-        .blog-date {
-            color: var(--accent);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .blog-content h3 {
-            margin-bottom: 1rem;
-        }
-
-        .blog-content p {
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-
-        .blog-detail {
-            display: none;
-            padding: 2rem;
-            background: var(--white);
-            border-radius: 10px;
-            margin-top: 2rem;
-        }
-
-        .blog-detail.active {
-            display: block;
-        }
-
-        /* Contact Page */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-form {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .error {
-            color: var(--danger);
-            font-size: 0.85rem;
-            margin-top: 0.25rem;
-            display: none;
-        }
-
-        .form-group.error input,
-        .form-group.error textarea {
-            border-color: var(--danger);
-        }
-
-        .form-group.error .error {
-            display: block;
-        }
-
-        .contact-info {
-            padding: 2rem;
-        }
-
-        .contact-info h3 {
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .info-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        /* Admin Page */
-        .admin-section {
-            padding: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .admin-header h1 {
-            color: var(--accent);
-        }
-
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .kpi-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-
-        .kpi-card h3 {
-            color: var(--gray);
-            font-size: 0.9rem;
-            font-family: 'Nunito', sans-serif;
-            margin-bottom: 0.5rem;
-        }
-
-        .kpi-card .value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .kpi-card .trend {
-            font-size: 0.9rem;
-            color: var(--success);
-            margin-top: 0.5rem;
-        }
-
-        .messages-section h2 {
-            margin-bottom: 1.5rem;
-        }
-
-        .messages-table {
-            width: 100%;
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .messages-table th,
-        .messages-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-
-        .messages-table th {
-            background: var(--primary);
-            color: var(--white);
-            font-weight: 600;
-        }
-
-        .messages-table tr:hover {
-            background: var(--light);
-        }
-
-        .status {
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        .status.nou {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        .status-citit {
-            background: var(--success);
-            color: var(--white);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: var(--white);
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        footer p {
-            margin-bottom: 0.5rem;
+        /* Icons Helpers */
+        .icon-small {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2.5;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
+        @media (max-width: 992px) {
+            .about-content, .service-item, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
             }
-
-            .hamburger {
-                display: flex;
+            .service-item:nth-child(even) {
+                direction: ltr;
             }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
             .stats-bar {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .stat-item .number {
-                font-size: 2rem;
-            }
-
-            .page-hero h1 {
-                font-size: 2rem;
-            }
-
-            .about-content,
-            .service-item,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .service-item:nth-child(even) {
-                direction: ltr;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
-            .hamburger {
-                display: flex;
-            }
-
-            .mobile-nav {
-                display: block;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .page-hero h1 {
-                font-size: 2rem;
-            }
-
-            .about-content,
-            .service-item,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .service-item:nth-child(even) {
-                direction: ltr;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hamburger { display: flex; }
+            .section { padding: 5rem 1.5rem; }
+            .hero-buttons { flex-direction: column; }
+            .btn, .btn-outline { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <a href="https://wa.me/40123456789" class="whatsapp-float" target="_blank" title="Scrie-ne pe WhatsApp">
-        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.003 0C7.338 0 0 7.341 0 16.008c0 2.628.64 5.212 1.893 7.483l-2.007 7.263c-.213.768-.689 1.398-1.323 1.753-.634.355-1.423.433-2.17.214L7.49 30.94c-.384-.126-.78-.191-1.178-.191-2.76 0-5.308-2.247-5.308-5.013 0-2.763 2.247-5.013 5.008-5.013 2.76 0 5.008 2.25 5.008 5.013 0 2.763-2.247 5.013-5.008 5.013-2.76 0-5.008-2.25-5.008-5.013 0-.414.053-.825.156-1.226l1.928-6.974c.402-1.456 1.21-2.786 2.305-3.788 1.094-1.003 2.455-1.603 3.917-1.727L9.79 8.28c2.76 0 5.008-2.25 5.008-5.013 0-2.763-2.247-5.013-5.008-5.013C12.628.053 12.237.003 11.844.003 7.338.003.007 7.341.007 16.008c0 8.667 7.341 15.995 16.003 15.995 8.66 0 15.993-7.328 15.993-15.995C32 7.341 24.659 0 16.003 0z"/></svg>
+    <a href="https://wa.me/40722000000" class="whatsapp-float" target="_blank">
+        <svg style="width:30px;height:30px;fill:white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.353-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.05-.148-.471-1.138-.646-1.559-.17-.41-.339-.354-.471-.354-.121-.002-.26-.002-.398-.002-.138 0-.363.05-.554.26-.191.21-.73.713-.73 1.739s.745 2.015.847 2.152c.102.137 1.464 2.23 3.548 3.126.496.213.882.34 1.185.437.498.158.951.135 1.309.075.4-.067 1.255-.513 1.431-.983.176-.47.176-.874.124-.967-.052-.094-.19-.15-.487-.3zM12.003 21c-1.625 0-3.21-.425-4.604-1.23l-.33-.192-3.424.898.914-3.336-.21-.334A8.955 8.955 0 013 12c0-4.963 4.035-9 9-9 4.963 0 9 4.037 9 9s-4.037 9-9 9zM12 1a10.89 10.89 0 00-11 11c0 1.916.486 3.784 1.411 5.437L0 23l5.744-1.505c1.584.864 3.364 1.319 5.253 1.32h.005c6.065 0 11-4.935 11-11 0-2.91-1.132-5.643-3.192-7.705A10.887 10.887 0 0012 1z"/></svg>
     </a>
+
     <header>
-        <div class="logo">Elite Shine</div>
+        <div class="logo" onclick="handleRoute()">Elite Shine</div>
         <nav>
             <ul>
                 <li><a href="#home" data-route="home">Acasă</a></li>
                 <li><a href="#about" data-route="about">Despre</a></li>
                 <li><a href="#services" data-route="services">Servicii</a></li>
-                <li><a href="#blog" data-route="blog">Blog</a></li>
+                
                 <li><a href="#contact" data-route="contact">Contact</a></li>
-                <li><a href="#admin" data-route="admin">Admin</a></li>
+                
             </ul>
         </nav>
         <div class="hamburger" id="hamburger">
@@ -1052,34 +715,39 @@
             <li><a href="#home" data-route="home">Acasă</a></li>
             <li><a href="#about" data-route="about">Despre</a></li>
             <li><a href="#services" data-route="services">Servicii</a></li>
-            <li><a href="#blog" data-route="blog">Blog</a></li>
+            
             <li><a href="#contact" data-route="contact">Contact</a></li>
-            <li><a href="#admin" data-route="admin">Admin</a></li>
+            
         </ul>
     </div>
 
     <main>
         <!-- Home Page -->
-        <div id="home" class="page">
+        <div id="home" class="page active">
             <section class="hero">
                 <div class="hero-content">
-                    <h1>Elite Shine Detailing</h1>
                     <p class="subtitle">Excelență în Detailing Auto</p>
-                    <p>Transformăm vehiculul tău într-o operă de artă. Servicii premium de detailing pentru o strălucire deosebită.</p>
+                    <h1>Redefinim Strălucirea<br>Vehiculului Tău</h1>
+                    <p style="font-size: 1.15rem; color: rgba(255,255,255,0.85); margin-bottom: 3rem; font-weight: 300; max-width: 700px; margin-left: auto; margin-right: auto;">
+                        La Elite Shine, tratăm fiecare automobil ca pe o operă de artă. Combinăm pasiunea artizanală cu nanotehnologia de ultimă generație pentru a oferi un finisaj impecabil și o protecție de neclintit. Experiența ta auto, elevată la rang de excelență.
+                    </p>
                     <div class="hero-buttons">
-                        <a href="#services" class="btn">Descoperă Serviciile</a>
-                        <a href="#contact" class="btn-outline">Programează-te</a>
+                        <a href="#services" class="btn" data-route="services">
+                            Vezi Serviciile
+                            <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                        <a href="#contact" class="btn-outline" data-route="contact">Programează-te</a>
                     </div>
                 </div>
             </section>
 
-            <div class="stats-bar">
+            <div class="stats-bar reveal">
                 <div class="stat-item">
                     <div class="number">10+</div>
                     <div class="label">Ani Experiență</div>
                 </div>
                 <div class="stat-item">
-                    <div class="number">2500</div>
+                    <div class="number">2500+</div>
                     <div class="label">Mașini Detaliate</div>
                 </div>
                 <div class="stat-item">
@@ -1092,142 +760,137 @@
                 </div>
             </div>
 
-            <section class="section services-short">
-                <h2 class="section-title">De Ce Să Ne Alegi</h2>
+            <section class="section">
+                <div class="section-title-wrap reveal">
+                    <span class="section-subtitle">Promisiunea Noastră</span>
+                    <h2 class="section-title">Standarde Premium</h2>
+                </div>
                 <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">✨</div>
-                        <h3>Produse Premium</h3>
-                        <p>Foloseim doar produse de top, certificate profesional, pentru rezultate excepționale.</p>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                        </div>
+                        <h3>Produse de Top</h3>
+                        <p>Avem parteneriate exclusive cu lideri mondiali în nanotehnologie auto. Folosim doar protecții ceramice și soluții premium, bio-degradabile, garantând nu doar un finisaj estetic de excepție, ci și o protecție îndelungată, respectând totodată cele mai înalte standarde ecologice.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🏆</div>
-                        <h3>Experți Certificați</h3>
-                        <p>Echipa noastră este instruită și certificată în tehnici avansate de detailing auto.</p>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                        </div>
+                        <h3>Echipă Certificată</h3>
+                        <p>Fiecare tehnician Elite Shine este riguros instruit la cele mai înalte standarde internaționale. Expertiza noastră în corecția vopselei și restaurarea interioarelor asigură că vehiculul dumneavoastră se află pe cele mai sigure și pricepute mâini din industrie.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⏱️</div>
-                        <h3>Livrare la Termen</h3>
-                        <p>Respectăm cu strictețe termenele convenite. Timpul tău este important.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🛡️</div>
-                        <h3>Garanție Extinsă</h3>
-                        <p>Oferim garanție de până la 5 ani pentru protecția ceramică aplicată.</p>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3>Eficiență Riguroasă</h3>
+                        <p>Am implementat procese meticuloase și optimizate, care ne permit să oferim rezultate demne de concursurile de frumusețe auto. Gestionăm fiecare proiect cu o atenție obsedantă pentru detaliu, respectând cu strictețe termenele de execuție convenite.</p>
                     </div>
                 </div>
             </section>
 
-            <section class="section services-short">
-                <h2 class="section-title">Serviciile Noastre</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3>Detailing Interior</h3>
-                        <p>Curățare profundă și restaurare a interiorului: tapițerie, piele, plastic și covoare.</p>
+            <section class="section">
+                <div class="section-title-wrap reveal">
+                    <span class="section-subtitle">Portofoliu</span>
+                    <h2 class="section-title">Lucrări Recente</h2>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item reveal">
+                        <img src="imgs/gallery-1.png" alt="Lucrare 1">
+                        <div class="gallery-overlay"><span class="btn-outline">Detalii Proiect</span></div>
                     </div>
-                    <div class="service-card">
-                        <h3>Corecție Vopsea</h3>
-                        <p>Eliminarea zgârieturilor și imperfecțiunilor pentru un finisaj perfect, ca la showroom.</p>
+                    <div class="gallery-item reveal">
+                        <img src="imgs/gallery-2.png" alt="Lucrare 2">
+                        <div class="gallery-overlay"><span class="btn-outline">Detalii Proiect</span></div>
                     </div>
-                    <div class="service-card">
-                        <h3>Protecție Ceramică</h3>
-                        <p>Acoperire de înaltă performanță care protejează vopseaua și oferă strălucire hidrofobă.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Curățare Motor</h3>
-                        <p>Detailing complet al compartimentului motor pentru un aspect curat și îngrijit.</p>
+                    <div class="gallery-item reveal">
+                        <img src="imgs/gallery-3.png" alt="Lucrare 3">
+                        <div class="gallery-overlay"><span class="btn-outline">Detalii Proiect</span></div>
                     </div>
                 </div>
             </section>
 
             <section class="testimonials">
-                <h2 class="section-title">Ce Spun Clienții Noștri</h2>
+                <div class="section-title-wrap reveal">
+                    <span class="section-subtitle">Referințe</span>
+                    <h2 class="section-title" style="color: var(--white)">Clienți Mulțumiți</h2>
+                </div>
                 <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Am adus mașina mea BMW în stare deplorabilă și am primit-o ca nouă. Echipa Elite Shine a făcut o treabă extraordinară. Recomand cu căldură!"</p>
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-text">"O transformare incredibilă. Mașina arată mai bine decât atunci când am scos-o din reprezentanță."</p>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">IP</div>
-                            <div class="testimonial-info">
-                                <h4>Ion Popescu</h4>
-                                <span>Client fidel din 2022</span>
-                            </div>
+                            <div><h4>Ion Popescu</h4><span>Audi A8</span></div>
                         </div>
                     </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Cel mai bun detailing din oraș! Am făcut protecție ceramică și rezultatul este incredibil. Mașina strălucește ca în prima zi, chiar și după 6 luni."</p>
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-text">"Protecția ceramică face toți banii. Apa și murdăria pur și simplu fug de pe vopsea."</p>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">MI</div>
-                            <div class="testimonial-info">
-                                <h4>Maria Ionescu</h4>
-                                <span>Clientă din 2021</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Profesionalism la cel mai înalt nivel. Am avut o consultație gratuită și am primit toate informațiile necesare. Sunt extrem de mulțumit."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">AD</div>
-                            <div class="testimonial-info">
-                                <h4>Alexandru Dumitrescu</h4>
-                                <span>Client din 2023</span>
-                            </div>
+                            <div><h4>Maria Ionescu</h4><span>Porsche Cayenne</span></div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="section featured-work">
-                <h2 class="section-title">Lucrări Recente</h2>
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="imgs/gallery-1.png" alt="Lucrare 1">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="imgs/gallery-2.png" alt="Lucrare 2">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="imgs/gallery-3.png" alt="Lucrare 3">
-                    </div>
-                </div>
-            </section>
-
-            <section class="cta-banner">
-                <h2>Pregătit să Transformăm Mașina Ta?</h2>
-                <p>Programări disponibile rapid. Consultation gratuită pentru toți clienții noi.</p>
-                <a href="#contact" class="btn">Programează Consultația</a>
+            <section class="cta-banner reveal">
+                <span class="section-subtitle" style="color: var(--primary)">Rezervări</span>
+                <h2 class="section-title" style="margin-bottom: 2rem;">Ești Gata de Transformare?</h2>
+                <a href="#contact" class="btn" style="background: var(--primary); color: var(--white);" data-route="contact">Solicită Ofertă</a>
             </section>
         </div>
 
         <!-- About Page -->
         <div id="about" class="page">
             <section class="page-hero">
-                <h1>Despre Noi</h1>
+                <div class="reveal">
+                    <span class="section-subtitle" style="color: var(--accent)">Moștenirea și Viziunea</span>
+                    <h1>Arta Detaliului Absolut</h1>
+                </div>
             </section>
 
             <section class="section">
                 <div class="about-content">
-                    <div class="about-image">
-                        <img src="imgs/about.png" alt="Echipa Elite Shine">
+                    <div class="about-image reveal">
+                        <img src="imgs/about.png" alt="Atelierul Elite Shine">
                     </div>
-                    <div class="about-text">
-                        <h3>Misiunea Noastră</h3>
-                        <p>La Elite Shine Detailing, pasiunea noastră este transformarea fiecărui vehicul într-o capodoperă. Cu o experiență de peste 10 ani în domeniu, ne-am dedicat să oferim servicii de înaltă calitate, folosind doar produse premium și tehnici inovatoare.</p>
-                        <p style="margin-top: 1rem;">Credem că fiecare mașină merită să strălucească la maxim potențialul său, iar satisfacția clienților noștri este cea mai importantă recompensă.</p>
+                    <div class="about-text reveal">
+                        <span class="section-subtitle">Filozofia Noastră</span>
+                        <h3>Dincolo de Estetică</h3>
+                        <p>La Elite Shine, credem că un automobil nu este doar un mijloc de transport, ci o extensie a personalității proprietarului său și o capodoperă de inginerie care merită conservată cu sfințenie. Filozofia noastră, "Artizanal Detailing", se bazează pe premisa că perfecțiunea nu poate fi grăbită.</p>
+                        <p>Fiecare proiect începe cu o analiză microscopică a suprafețelor. Nu aplicăm soluții universale; personalizăm fiecare tratament în funcție de duritatea lacului, tipul de piele și istoricul vehiculului. Această abordare analitică ne permite să atingem rezultate care redefinesc noțiunea de "nou".</p>
+                        <p style="margin-top: 2rem; border-left: 2px solid var(--accent); padding-left: 1.5rem; font-style: italic; color: var(--primary-light); font-family: 'Playfair Display', serif; font-size: 1.25rem;">"Nu urmărim doar strălucirea, ci profunzimea. Un detaliu executat corect nu atrage doar privirea, ci provoacă o emoție."</p>
                     </div>
                 </div>
 
-                <div class="values-grid">
-                    <div class="value-card">
-                        <h4>Profesionalism</h4>
-                        <p>Echipa noastră certificată are experiență vastă în toate aspectele detailing-ului auto.</p>
+                <div class="about-content" style="margin-top: 12rem; grid-template-columns: 1fr 1fr;">
+                    <div class="about-text reveal" style="order: 2;">
+                        <span class="section-subtitle">Atelierul (The Atelier)</span>
+                        <h3>Un Mediu Controlat Clinic</h3>
+                        <p>Excelența în detailing necesită mai mult decât talent; necesită un mediu perfect controlat. Studioul nostru din București a fost conceput ca un laborator tehnic, echipat cu sisteme de iluminare chirurgicală multi-spectru, capabile să dezvăluie chiar și cele mai fine imperfecțiuni invizibile ochiului liber sub lumina naturală.</p>
+                        <p>Controlăm riguros umiditatea și temperatura ambientală pentru a asigura polimerizarea optimă a straturilor de protecție ceramică. Fiecare instrument, de la mașinile de polizat orbitale până la cele mai fine pensule din păr de veveriță, este selecționat pentru a oferi siguranță maximă suprafețelor delicate.</p>
                     </div>
-                    <div class="value-card">
-                        <h4>Calitate</h4>
-                        <p>Foloseim doar produse de top și echipamente profesionale pentru rezultate exceptionale.</p>
+                    <div class="about-image reveal" style="order: 1;">
+                        <img src="imgs/hero-2.png" alt="Echipamente profesionale" style="filter: grayscale(0.2);">
                     </div>
-                    <div class="value-card">
-                        <h4>Atenție la Detalii</h4>
-                        <p>Fiecare vehicul este tratat cu atenție maximă, indiferent de dimensiunea proiectului.</p>
+                </div>
+
+                <div class="values-grid" style="margin-top: 12rem;">
+                    <div class="feature-card reveal" style="padding: 5rem 3rem;">
+                        <span class="section-subtitle">01</span>
+                        <h3>Artizanii</h3>
+                        <p>Echipa noastră nu este formată din simpli angajați, ci din artizani pasionați care trec prin programe de certificare continuă în Europa și Statele Unite. Fiecare membru al echipei deține o înțelegere profundă a chimiei produselor și a fizicii procesului de corecție.</p>
+                    </div>
+                    <div class="feature-card reveal" style="padding: 5rem 3rem;">
+                        <span class="section-subtitle">02</span>
+                        <h3>Sustenabilitatea</h3>
+                        <p>Luxul modern înseamnă responsabilitate. Elite Shine utilizează tehnologii de filtrare a apei și soluții de curățare bio-degradabile de ultimă generație, minimizând impactul asupra mediului fără a sacrifica performanța procesului de restaurare.</p>
+                    </div>
+                    <div class="feature-card reveal" style="padding: 5rem 3rem;">
+                        <span class="section-subtitle">03</span>
+                        <h3>Confidențialitate</h3>
+                        <p>Tratăm cu maximă discreție identitatea clienților noștri și detaliile colecțiilor auto pe care le gestionăm. Atelierul nostru oferă un spațiu securizat, unde vehiculele rare și de colecție sunt protejate în cele mai sigure condiții.</p>
                     </div>
                 </div>
             </section>
@@ -1236,332 +899,154 @@
         <!-- Services Page -->
         <div id="services" class="page">
             <section class="page-hero">
-                <h1>Serviciile Noastre</h1>
+                <div class="reveal">
+                    <span class="section-subtitle" style="color: var(--accent); text-align: center;">Menu d'Excellence</span>
+                    <h1>Inginerie și Estetică</h1>
+                </div>
             </section>
 
             <section class="section">
-                <div class="service-item">
+                <div class="service-item reveal">
                     <div class="service-image">
-                        <img src="imgs/service-1.png" alt="Detailing Interior">
+                        <img src="imgs/service-1.png" alt="Detailing Interior Elite">
                     </div>
                     <div class="service-info">
-                        <h3>Detailing Interior</h3>
-                        <p>Transformăm interiorul mașinii tale într-un spațiu curat și confortabil. Servicii includ:</p>
-                        <ul>
-                            <li>Curățare și tratare piele</li>
-                            <li>Curățare tapițerie textile</li>
-                            <li>Detailing bord și plastic</li>
-                            <li>Curățare și protecție covoare</li>
-                            <li>Igienizare cu aboz</li>
-                        </ul>
+                        <span class="section-subtitle">01 / Interior Concours</span>
+                        <h3>Restaurare și Conservare Habitaclu</h3>
+                        <p>Pentru noi, interiorul unui automobil este un ecosistem complex care necesită o abordare chirurgicală. Nu ne limităm la curățare; efectuăm o restaurare moleculară a suprafețelor. Utilizăm tehnologia de injecție-extracție cu apă deionizată pentru a preveni reziduurile minerale în fibrele textile.</p>
+                        <p style="margin-top: 1.5rem;">Fiecare cm² de piele este tratat cu soluții de pH echilibrat care deschid porii pentru o curățare profundă, urmate de o infuzie de nutrienți naturali care redau elasticitatea și mirosul original de "mașină nouă".</p>
+                        <div style="margin-top: 2rem; padding: 2rem; border: 1px solid rgba(0,0,0,0.05); background: #f9f9f9;">
+                            <h4 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Protocolul Tehnic:</h4>
+                            <ul style="font-size: 0.85rem; color: var(--gray);">
+                                <li style="border:none; padding: 0.25rem 0;">• Dezinfectare termică la 120°C (neutralizează 99.9% din bacterii)</li>
+                                <li style="border:none; padding: 0.25rem 0;">• Protecție anti-statică pentru elementele din fibră de carbon și piano-black</li>
+                                <li style="border:none; padding: 0.25rem 0;">• Coating ceramic dedicat pentru suprafețele din piele și plastic</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <div class="service-item">
-                    <div class="service-image">
-                        <img src="imgs/service-2.png" alt="Corecție Vopsea">
+                <div class="service-item reveal">
+                    <div class="service-image" style="order: 2;">
+                        <img src="imgs/service-2.png" alt="Corecție Vopsea Stage 3">
                     </div>
-                    <div class="service-info">
-                        <h3>Corecție Vopsea</h3>
-                        <p>Eliminăm zgârieturile și imperfecțiunile pentru un finisaj perfect. Servicii includ:</p>
-                        <ul>
-                            <li>Polizare într-o singură etapă</li>
-                            <li>Corecție completă în mai multe etape</li>
-                            <li>Eliminarea swirl marks</li>
-                            <li>Restaurare faruri</li>
-                            <li>Protejare vopsea după corecție</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="service-item">
-                    <div class="service-image">
-                        <img src="imgs/service-3.png" alt="Protecție Ceramică">
-                    </div>
-                    <div class="service-info">
-                        <h3>Protecție Ceramică</h3>
-                        <p>Protejăm vopseaua cu tehnologie ceramică avansată. Servicii includ:</h3>
-                        <ul>
-                            <li>Aplicare coating ceramic 9H</li>
-                            <li>Protecție fațete și cristale</li>
-                            <li>Tratare jante și anvelope</li>
-                            <li>Mentenanță ceramică</li>
-                            <li>Garanție de până la 5 ani</li>
-                        </ul>
+                    <div class="service-info" style="order: 1;">
+                        <span class="section-subtitle">02 / Paint Correction</span>
+                        <h3>Master Correction Stage 3</h3>
+                        <p>Vopseaua automobilului tău este supusă constant agresiunilor externe. Procesul nostru de corecție "Concours Level" elimină defectele prin îndepărtarea unei grosimi microscopice de lac (măsurată cu aparatură ultrasonică), restabilind claritatea optică absolută.</p>
+                        <p style="margin-top: 1.5rem;">Utilizăm o succesiune de 3 până la 5 etape de polizare cu paste abrazive pe bază de apă, fără silicon sau filleri mascați. Rezultatul este o suprafață perfect plană care reflectă lumina fără distorsiuni, oferind acea profunzime de "wet look" specifică mașinilor de expoziție.</p>
+                        <div style="margin-top: 2rem; padding: 2rem; border: 1px solid rgba(0,0,0,0.05); background: #f9f9f9;">
+                            <h4 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Specificații:</h4>
+                            <ul style="font-size: 0.85rem; color: var(--gray);">
+                                <li style="border:none; padding: 0.25rem 0;">• Eliminare Swirl Marks și Zgârieturi Râncede (RDS)</li>
+                                <li style="border:none; padding: 0.25rem 0;">• Măsurători de grosime a lacului în 20 de puncte per panou</li>
+                                <li style="border:none; padding: 0.25rem 0;">• Finisaj cu micro-abrazivi pentru reflexie de tip oglindă</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <div class="service-item">
+                <div class="service-item reveal">
                     <div class="service-image">
-                        <img src="imgs/gallery-4.png" alt="Curățare Motor">
+                        <img src="imgs/service-3.png" alt="Protecție Nanoceramică 9H">
                     </div>
                     <div class="service-info">
-                        <h3>Curățare Motor</h3>
-                        <p>Compartimentul motor curățat și îngrijit ca la fabrcă. Servicii includ:</p>
-                        <ul>
-                            <li>Degreasare completă</li>
-                            <li>Curățare componente plastice</li>
-                            <li>Curățare compartiment motor</li>
-                            <li>Protejare și conservare</li>
-                            <li>Tratare curele și furtunuri</li>
-                        </ul>
+                        <span class="section-subtitle">03 / Nanotechnology</span>
+                        <h3>Barieră Moleculară SiO2 & SiC</h3>
+                        <p>Protecția noastră ceramică nu este un simplu strat de ceară; este o legătură chimică permanentă cu lacul mașinii. Folosim coating-uri hibride ce combină Dioxidul de Siliciu (SiO2) pentru strălucire și Carbură de Siliciu (SiC) pentru o rezistență extremă la zgârieturi și chimicale corozive.</p>
+                        <p style="margin-top: 1.5rem;">Odată aplicat, acest strat dublează duritatea suprafeței și creează o tensiune superficială atât de mare încât apa și contaminanții nu pot adera. Mașina rămâne curată mult mai mult timp, iar spălarea devine un proces rapid și sigur.</p>
+                        <div style="margin-top: 2rem; padding: 2rem; border: 1px solid rgba(0,0,0,0.05); background: #f9f9f9;">
+                            <h4 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Beneficii Supreme:</h4>
+                            <ul style="font-size: 0.85rem; color: var(--gray);">
+                                <li style="border:none; padding: 0.25rem 0;">• Duritate certificată 9H+ (Rezistență la micro-zgârieturi)</li>
+                                <li style="border:none; padding: 0.25rem 0;">• Protecție UV totală (previne oxidarea și mătuirea)</li>
+                                <li style="border:none; padding: 0.25rem 0;">• Garanție documentată de până la 60 de luni</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-section">
-                    <h2 class="section-title">Întrebări Frecvente</h2>
+                <div class="faq-section reveal" style="margin-top: 10rem;">
+                    <div class="section-title-wrap">
+                        <span class="section-subtitle">Asistență</span>
+                        <h2 class="section-title">Claritate Tehnică</h2>
+                    </div>
                     <div class="accordion">
                         <div class="accordion-item">
-                            <div class="accordion-header">Cât durează un serviciu de detailing?</div>
+                            <div class="accordion-header">Care este diferența între un polish rapid și corecția voastră Stage 3?</div>
                             <div class="accordion-content">
-                                <p>Durata variază în funcție de serviciu și starea vehiculului. Un detailing interior durează între 4-8 ore, în timp ce corecția vopselei poate dura 1-3 zile. Protecția ceramică necesită 2-3 zile pentru aplicare și uscare completă.</p>
+                                <p>Un polish rapid (de tip "one-step") doar maschează temporar zgârieturile folosind uleiuri și filleri. Corecția noastră Stage 3 elimină permanent defectele prin rectificarea plană a lacului. Este un proces de precizie care durează peste 40 de ore de muncă manuală, rezultând într-un finisaj care nu se va "estompa" după prima spălare.</p>
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <div class="accordion-header">Ce produse folosiți?</div>
+                            <div class="accordion-header">De ce este necesar un mediu controlat pentru protecția ceramică?</div>
                             <div class="accordion-content">
-                                <p>Folose exclusiv produse premium de la branduri recunoscute la nivel internațional precum Gtechniq, Koch Chemie, Meguiar's și alții. Toate produsele sunt sigure pentru vehicul și oferă rezultate profesionale.</p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <div class="accordion-header">Oferiți garanție pentru servicii?</div>
-                            <div class="accordion-content">
-                                <p>Da! Protecția ceramică vine cu garanție de până la 5 ani. Pentru celelalte servicii, oferim garanție de 6 luni pentru lucrările efectuate. Condițiile garanției sunt detaliate în contractul de prestări servicii.</p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <div class="accordion-header">Trebuie să programăm în avans?</div>
-                            <div class="accordion-content">
-                                <p>Recomandăm programarea cu cel puțin 1-2 săptămâni în avans, mai ales pentru serviciile complexe precum protecția ceramică sau corecția completă a vopselei. Totuși, în funcție de disponibilitate, putem accepta și programări last-minute.</p>
+                                <p>Coating-urile ceramice sunt extrem de sensibile la umiditate și praf în primele 12-24 de ore de la aplicare. În atelierul nostru, menținem o temperatură constantă de 22°C și o umiditate sub 45%, folosind lămpi cu infraroșu pentru a forța procesul de reticulare (curing), asigurând o aderență maximă și o durată de viață extinsă a protecției.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
-
-        <!-- Blog Page -->
-        <div id="blog" class="page">
-            <section class="page-hero">
-                <h1>Blog</h1>
-            </section>
-
-            <section class="section">
-                <div class="blog-grid">
-                    <div class="blog-card">
-                        <div class="blog-image">
-                            <img src="imgs/gallery-1.png" alt="Cum să îți menții mașina strălucitoare">
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-date">15 Martie 2026</div>
-                            <h3>Cum să Îți Menții Mașina Strălucitoare Tot Anul</h3>
-                            <p>Descoperă secretele îngrijirii corecte a vehiculului tău pentru a menține strălucirea ca în prima zi...</p>
-                            <button class="btn" onclick="showBlogDetail('blog1')">Citește mai mult</button>
-                        </div>
-                    </div>
-
-                    <div class="blog-card">
-                        <div class="blog-image">
-                            <img src="imgs/gallery-2.png" alt="Ghid Protecție Ceramică">
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-date">28 Februarie 2026</div>
-                            <h3>Ghid Complet: Protecție Ceramică vs Ceară</h3>
-                            <p>Comparăm cele două metode de protecție și aflăm care este mai potrivită pentru tine...</p>
-                            <button class="btn" onclick="showBlogDetail('blog2')">Citește mai mult</button>
-                        </div>
-                    </div>
-
-                    <div class="blog-card">
-                        <div class="blog-image">
-                            <img src="imgs/gallery-3.png" alt="Sfaturi Interior">
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-date">10 Ianuarie 2026</div>
-                            <h3>5 Sfaturi pentru un Interior Perfect</h3>
-                            <p>Indicii și tehnici profesionale pentru curățarea și întreținerea interiorului mașinii tale...</p>
-                            <button class="btn" onclick="showBlogDetail('blog3')">Citește mai mult</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="blog-detail-container"></div>
             </section>
         </div>
 
         <!-- Contact Page -->
         <div id="contact" class="page">
             <section class="page-hero">
-                <h1>Contact</h1>
+                <div class="reveal">
+                    <span class="section-subtitle" style="color: var(--accent); text-align: center;">Concierge Service</span>
+                    <h1>Consultantă și Rezervări Private</h1>
+                </div>
             </section>
 
             <section class="section">
-                <div class="contact-grid">
-                    <div class="contact-form">
-                        <h2 style="margin-bottom: 1.5rem;">Trimite un Mesaj</h2>
-                        <form id="contactForm">
-                            <div class="form-group" id="nameGroup">
-                                <label for="name">Nume și Prenume *</label>
-                                <input type="text" id="name" name="name" required>
-                                <span class="error">Te rog să introduci numele tău complet</span>
-                            </div>
-
-                            <div class="form-group" id="emailGroup">
-                                <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" required>
-                                <span class="error">Te rog să introduci un email valid</span>
-                            </div>
-
-                            <div class="form-group" id="phoneGroup">
-                                <label for="phone">Telefon</label>
-                                <input type="tel" id="phone" name="phone">
-                            </div>
-
-                            <div class="form-group" id="serviceGroup">
-                                <label for="service">Serviciu Interesat *</label>
-                                <select id="service" name="service" required>
-                                    <option value="">Selectează un serviciu</option>
-                                    <option value="detailing-interior">Detailing Interior</option>
-                                    <option value="corecție-vopsea">Corecție Vopsea</option>
-                                    <option value="protecție-ceramică">Protecție Ceramică</option>
-                                    <option value="curățare-motor">Curățare Motor</option>
-                                    <option value="altul">Altul</option>
-                                </select>
-                                <span class="error">Te rog să selectezi un serviciu</span>
-                            </div>
-
-                            <div class="form-group" id="messageGroup">
-                                <label for="message">Mesaj *</label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                                <span class="error">Te rog să introduci un mesaj</span>
-                            </div>
-
-                            <button type="submit" class="btn">Trimite Mesajul</button>
-                        </form>
+                <div class="contact-grid" style="grid-template-columns: 1fr 1fr; gap: 10rem; align-items: flex-start;">
+                    <div class="reveal">
+                        <span class="section-subtitle">Exclusivitate</span>
+                        <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Acces prin Invitație și Programare</h2>
+                        <p style="font-weight: 300; line-height: 2.2; color: var(--gray); font-size: 1.1rem;">
+                            Pentru a asigura nivelul de atenție și precizie pe care îl merită fiecare proiect, Elite Shine funcționează exclusiv pe bază de programare prealabilă. Nu suntem un serviciu de volum, ci un atelier dedicat calității absolute.
+                        </p>
+                        <p style="margin-top: 2rem; font-weight: 300; line-height: 2.2; color: var(--gray); font-size: 1.1rem;">
+                            Vă invităm să ne contactați direct pentru o evaluare privată a vehiculului dumneavoastră sau pentru a discuta despre gestionarea unei întregi colecții auto.
+                        </p>
                     </div>
 
-                    <div class="contact-info">
-                        <h3>Informații de Contact</h3>
-                        <div class="info-item">
-                            <div class="info-icon">📍</div>
-                            <div>
-                                <strong>Adresa</strong>
-                                <p>Strada Exemplu Nr. 123, București</p>
+                    <div class="reveal" style="display: flex; flex-direction: column; gap: 4rem;">
+                        <div>
+                            <span class="section-subtitle" style="margin-bottom: 2rem;">Canale Directe</span>
+                            <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+                                <a href="https://wa.me/40722000000" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1.5rem; group">
+                                    <div style="width: 50px; height: 50px; border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; color: var(--accent);">
+                                        <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    </div>
+                                    <div>
+                                        <span style="display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 0.25rem;">WhatsApp Concierge</span>
+                                        <span style="font-family: 'Playfair Display', serif; font-size: 1.4rem;">+40 722 000 000</span>
+                                    </div>
+                                </a>
+
+                                <a href="mailto:office@eliteshine.ro" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1.5rem;">
+                                    <div style="width: 50px; height: 50px; border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; color: var(--accent);">
+                                        <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <span style="display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 0.25rem;">Email Oficial</span>
+                                        <span style="font-family: 'Playfair Display', serif; font-size: 1.4rem;">concierge@eliteshine.ro</span>
+                                    </div>
+                                </a>
                             </div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-icon">📞</div>
-                            <div>
-                                <strong>Telefon</strong>
-                                <p>+40 123 456 789</p>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon">✉️</div>
-                            <div>
-                                <strong>Email</strong>
-                                <p>contact@eliteshine.ro</p>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon">🕐</div>
-                            <div>
-                                <strong>Program</strong>
-                                <p>Luni - Sâmbătă: 09:00 - 18:00</p>
-                            </div>
+
+                        <div>
+                            <span class="section-subtitle" style="margin-bottom: 2rem;">Localizare</span>
+                            <p style="font-family: 'Playfair Display', serif; font-size: 1.25rem; line-height: 1.6;">
+                                Bulevardul Expoziției, Nr. 12,<br>Sector 1, București, România
+                            </p>
+                            <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--gray); letter-spacing: 0.05em;">
+                                Luni — Sâmbătă: 09:00 - 18:00 (Doar pe bază de programare)
+                            </p>
                         </div>
                     </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Admin Page -->
-        <div id="admin" class="page">
-            <section class="admin-section">
-                <div class="admin-header">
-                    <h1>Panul de Administrare</h1>
-                    <button class="btn" onclick="logout()">Deconectare</button>
-                </div>
-
-                <div class="kpi-grid">
-                    <div class="kpi-card">
-                        <h3>Mesaje Noi</h3>
-                        <div class="value">12</div>
-                        <div class="trend">↑ 3 față de săptămâna trecută</div>
-                    </div>
-                    <div class="kpi-card">
-                        <h3>Programări Azi</h3>
-                        <div class="value">5</div>
-                        <div class="trend">→ Similar cu ieri</div>
-                    </div>
-                    <div class="kpi-card">
-                        <h3>Venit Luna Curentă</h3>
-                        <div class="value">€8,450</div>
-                        <div class="trend">↑ 15% față de luna trecută</div>
-                    </div>
-                    <div class="kpi-card">
-                        <h3>Clienți Fideli</h3>
-                        <div class="value">156</div>
-                        <div class="trend">↑ 8 noi clienți</div>
-                    </div>
-                </div>
-
-                <div class="messages-section">
-                    <h2>Mesaje Primite</h2>
-                    <table class="messages-table">
-                        <thead>
-                            <tr>
-                                <th>Data</th>
-                                <th>Nume</th>
-                                <th>Email</th>
-                                <th>Serviciu</th>
-                                <th>Mesaj</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>30 Mar 2026</td>
-                                <td>Ion Popescu</td>
-                                <td>ion@example.com</td>
-                                <td>Protecție Ceramică</td>
-                                <td>Doresc o programare pentru săptămâna viitoare...</td>
-                                <td><span class="status nou">Nou</span></td>
-                            </tr>
-                            <tr>
-                                <td>29 Mar 2026</td>
-                                <td>Maria Ionescu</td>
-                                <td>maria@example.com</td>
-                                <td>Detailing Interior</td>
-                                <td>Am o mașină BMW X5 și doresc detailing complet...</td>
-                                <td><span class="status nou">Nou</span></td>
-                            </tr>
-                            <tr>
-                                <td>28 Mar 2026</td>
-                                <td>Alexandru Dumitrescu</td>
-                                <td>alex@example.com</td>
-                                <td>Corecție Vopsea</td>
-                                <td>Am zgârieturi pe portiera din stânga...</td>
-                                <td><span class="status-citit">Citit</span></td>
-                            </tr>
-                            <tr>
-                                <td>27 Mar 2026</td>
-                                <td Elena Vasilescu</td>
-                                <td>elena@example.com</td>
-                                <td>Curățare Motor</td>
-                                <td>Vreau să curăț compartimentul motor la Mercedes...</td>
-                                <td><span class="status-citit">Citit</span></td>
-                            </tr>
-                            <tr>
-                                <td>26 Mar 2026</td>
-                                <td>Cosmin Georgescu</td>
-                                <td>cosmin@example.com</td>
-                                <td>Protecție Ceramică</td>
-                                <td>Interesat de pachetul ceramic premium...</td>
-                                <td><span class="status-citit">Citit</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </section>
         </div>
@@ -1569,209 +1054,90 @@
 
     <footer>
         <p>&copy; 2026 Elite Shine Detailing. Toate drepturile rezervate.</p>
-        <p>Strada Exemplu Nr. 123, București | +40 123 456 789</p>
+        <p style="opacity: 0.6; margin-top: 1rem; font-size: 0.8rem;">București, România | +40 722 000 000</p>
     </footer>
 
     <script>
-        // Router
-        const routes = ['home', 'about', 'services', 'blog', 'contact', 'admin'];
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.1 });
+
+        const initReveals = () => {
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        };
+
+        const routes = ['home', 'about', 'services', 'contact'];
 
         function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             const targetPage = document.getElementById(pageId);
             if (targetPage) {
                 targetPage.classList.add('active');
+                setTimeout(initReveals, 100);
             }
-
             document.querySelectorAll('nav a, .mobile-nav a').forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('data-route') === pageId) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('data-route') === pageId) link.classList.add('active');
             });
-
-            window.scrollTo(0, 0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function handleRoute() {
             const hash = window.location.hash.slice(1) || 'home';
-            if (routes.includes(hash)) {
-                showPage(hash);
-            } else {
-                showPage('home');
-            }
+            showPage(routes.includes(hash) ? hash : 'home');
             closeMobileNav();
         }
 
-        // Mobile Navigation
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobileNav');
 
         function toggleMobileNav() {
-            hamburger.classList.toggle('active');
+            const isActive = hamburger.classList.toggle('active');
             mobileNav.classList.toggle('active');
+            const spans = hamburger.querySelectorAll('span');
+            if (isActive) {
+                spans[0].style.transform = 'rotate(45deg) translate(8px, 8px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(8px, -8px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
         }
 
         function closeMobileNav() {
             hamburger.classList.remove('active');
             mobileNav.classList.remove('active');
+            const spans = hamburger.querySelectorAll('span');
+            spans.forEach(s => { s.style.transform = 'none'; s.style.opacity = '1'; });
         }
 
         hamburger.addEventListener('click', toggleMobileNav);
-
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', closeMobileNav);
-        });
-
-        // Popstate for back/forward buttons
         window.addEventListener('popstate', handleRoute);
-
-        // Initial route
-        handleRoute();
-
-        // Update hash without triggering popstate
-        document.querySelectorAll('nav a, .mobile-nav a').forEach(link => {
+        
+        document.querySelectorAll('nav a, .mobile-nav a, [data-route]').forEach(link => {
             link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const route = this.getAttribute('data-route');
-                history.pushState(null, '', '#' + route);
-                showPage(route);
-                closeMobileNav();
-            });
-        });
-
-        // Accordion
-        document.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', function() {
-                const item = this.parentElement;
-                const isActive = item.classList.contains('active');
-                
-                document.querySelectorAll('.accordion-item').forEach(i => {
-                    i.classList.remove('active');
-                });
-
-                if (!isActive) {
-                    item.classList.add('active');
+                if (this.tagName === 'A' && this.hash.startsWith('#')) e.preventDefault();
+                const route = this.getAttribute('data-route') || this.hash.slice(1);
+                if (routes.includes(route)) {
+                    history.pushState(null, '', '#' + route);
+                    showPage(route);
                 }
             });
         });
 
-        // Blog Detail View
-        function showBlogDetail(blogId) {
-            const container = document.getElementById('blog-detail-container');
-            const blogDetails = {
-                blog1: {
-                    title: 'Cum să Îți Menții Mașina Strălucitoare Tot Anul',
-                    date: '15 Martie 2026',
-                    image: 'imgs/gallery-1.png',
-                    content: `
-                        <p>Menținerea străluucirii mașinii tale necesită atenție și îngrijire constantă. Iată câteva sfaturi esențiale:</p>
-                        <p><strong>1. Spălare regulată</strong><br>Spală mașina cel puțin o dată pe săptămână pentru a îndepărta murdăria și contaminantii care pot deteriora vopseaua.</p>
-                        <p><strong>2. Protecție ceramică<br></strong>Investește într-o protecție ceramică profesională care oferă strălucire și protecție de lungă durată.</p>
-                        <p><strong>3. Uscare corectă<br></strong>Evită uscarea la aer, care lasă pete de apă. Folosește o cârpă din microfibră.</p>
-                        <p><strong>4. Interior curat<br></strong>Curăță interiorul regulat pentru a menține valoarea și aspectul mașinii.</p>
-                    `
-                },
-                blog2: {
-                    title: 'Ghid Complet: Protecție Ceramică vs Ceară',
-                    date: '28 Februarie 2026',
-                    image: 'imgs/gallery-2.png',
-                    content: `
-                        <p>Alegerea între protecție ceramică și ceară tradițională depinde de nevoile și bugetul tău.</p>
-                        <p><strong>Protecția Ceramică</strong><br>Oferă protecție de până la 5 ani, rezistență la chimicale și UV, strălucire profundă și efect hidrofob excelent.</p>
-                        <p><strong>Ceara tradițională</strong><br>Aplicare mai simplă, cost mai redus, durează 1-3 luni, oferă strălucire caldă și naturală.</p>
-                        <p><strong>Recomandarea noastră:</strong> Pentru rezultate de lungă durată și protecție superioară, alegem protecția ceramică. Pentru întreținere rapidă între sesiunile de detailing, ceara rămâne o opțiune bună.</p>
-                    `
-                },
-                blog3: {
-                    title: '5 Sfaturi pentru un Interior Perfect',
-                    date: '10 Ianuarie 2026',
-                    image: 'imgs/gallery-3.png',
-                    content: `
-                        <p>Un interior curat și îngrijit face fiecare călătorie mai plăcută. Iată 5 sfaturi esențiale:</p>
-                        <p><strong>1. Curăță săptămânal</strong><br>Șterge suprafețele și aspiră în fiecare săptămână pentru a preveni acumularea de praf.</p>
-                        <p><strong>2. Protejează pielea</strong><br>Folosește produse speciale pentru piele pentru a preveni crăparea și decolorarea.</p>
-                        <p><strong>3. Organizează habitaclul</strong><br>Folosește organizatoare pentru a menține ordine și a reduce dezordinea.</p>
-                        <p><strong>4. Curăță curcanul</strong><br>Curăță sistemul de ventilație pentru a îmbunătăți calitatea aerului.</p>
-                        <p><strong>5. Detailing profesional</strong><br>Programmează un detailing interior profesional de cel puțin 2 ori pe an.</p>
-                    `
-                }
-            };
-
-            const blog = blogDetails[blogId];
-            if (blog) {
-                container.innerHTML = `
-                    <div class="blog-detail active">
-                        <button class="btn" onclick="closeBlogDetail()" style="margin-bottom: 1rem;">Închide</button>
-                        <div class="blog-image" style="margin-bottom: 1.5rem;">
-                            <img src="${blog.image}" alt="${blog.title}">
-                        </div>
-                        <div class="blog-date">${blog.date}</div>
-                        <h2 style="margin: 1rem 0;">${blog.title}</h2>
-                        <div style="line-height: 1.8;">${blog.content}</div>
-                    </div>
-                `;
-                container.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        function closeBlogDetail() {
-            document.getElementById('blog-detail-container').innerHTML = '';
-        }
-
-        // Contact Form Validation
-        const contactForm = document.getElementById('contactForm');
-
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            let isValid = true;
-
-            const name = document.getElementById('name');
-            const email = document.getElementById('email');
-            const service = document.getElementById('service');
-            const message = document.getElementById('message');
-
-            // Reset errors
-            document.querySelectorAll('.form-group').forEach(g => g.classList.remove('error'));
-
-            // Validate name
-            if (!name.value.trim() || name.value.trim().length < 3) {
-                document.getElementById('nameGroup').classList.add('error');
-                isValid = false;
-            }
-
-            // Validate email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email.value)) {
-                document.getElementById('emailGroup').classList.add('error');
-                isValid = false;
-            }
-
-            // Validate service
-            if (!service.value) {
-                document.getElementById('serviceGroup').classList.add('error');
-                isValid = false;
-            }
-
-            // Validate message
-            if (!message.value.trim() || message.value.trim().length < 10) {
-                document.getElementById('messageGroup').classList.add('error');
-                isValid = false;
-            }
-
-            if (isValid) {
-                alert('Mesajul a fost trimis cu succes! Vă vom contacta în curând.');
-                contactForm.reset();
-            }
+        document.addEventListener('DOMContentLoaded', () => {
+            handleRoute();
+            initReveals();
         });
-
-        // Admin logout (mockup)
-        function logout() {
-            alert('Aceasta este o pagină demonstrativă. Funcționalitatea de deconectare nu este implementată.');
-        }
     </script>
 </body>
 </html>
